@@ -1,0 +1,273 @@
+<!-- INTRODUCTION PAGE (introduction.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff0f5;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            padding-top: 110px; /* Increased for taller card navbar */
+        }
+
+        /* Top Navigation Cards */
+        .top-nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 100, 0, 0.95);
+            padding: 12px 5%;
+            box-sizing: border-box;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .top-nav-container .card-link {
+            flex: 1;
+            max-width: 200px;
+            text-decoration: none;
+            display: block;
+        }
+        .top-nav-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #006400;
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+        .top-nav-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: #004d00;
+            border-color: #ffffff;
+        }
+        .top-nav-card .card-icon {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .top-nav-card h3 {
+            color: #006400;
+            font-size: 16px;
+            margin: 0;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .top-nav-card p {
+            color: #555;
+            font-size: 11px;
+            margin: 2px 0 0 0;
+            line-height: 1.2;
+            transition: color 0.2s;
+        }
+        .top-nav-card:hover h3,
+        .top-nav-card:hover p {
+            color: white;
+        }
+
+        .bottom-bar {
+            width: 100%;
+            background: #006400;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 60px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .bottom-bar table { margin: 0 auto; }
+
+        .topic-intro {
+            width: 85%;
+            margin: 20px auto 40px auto;
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid #006400;
+            border-radius: 12px;
+            padding: 45px 35px;
+            text-align: center;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0, 100, 0, 0.15);
+        }
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 160px; /* More space for wrapped top nav */
+            }
+            .top-nav-container {
+                flex-wrap: wrap; /* Allows nav cards to wrap to next line */
+                padding: 10px;
+                gap: 10px;
+            }
+            .top-nav-container .card-link {
+                max-width: 45%; /* Shows 2 nav cards per row on mobile */
+                min-width: 140px;
+            }
+            .topic-intro, .why-ph, .timeline-table-section, .visual-timeline, 
+            .references-section, .advocacy-section, .nav-cards {
+                width: 95%; /* Uses more screen width on mobile */
+                padding: 20px 15px; /* Reduces inner spacing */
+            }
+            .info-grid, .significance-grid {
+                width: 95%;
+                display: flex;
+                flex-direction: column; /* Stacks cards vertically on mobile */
+                gap: 15px;
+            }
+            .topic-intro h1 {
+                font-size: 28px; /* Smaller heading for mobile */
+            }
+            .topic-intro h2, .why-ph h2, .timeline-table-section h2, 
+            .visual-timeline h2, .references-section h2, .advocacy-section h2 {
+                font-size: 22px;
+            }
+            .timeline-table {
+                display: block;
+                overflow-x: auto; /* Allows horizontal scrolling for the table */
+                white-space: nowrap;
+            }
+        }
+        .topic-intro h1 { color: #006400; font-size: 42px; margin: 0 0 15px 0; }
+        .topic-intro .subtitle { color: #666; font-size: 16px; margin: 0 0 25px 0; font-style: italic; }
+        .topic-intro p { color: #333; font-size: 17px; margin: 10px auto; line-height: 1.7; max-width: 800px; text-align: justify; }
+
+        .info-grid { width: 85%; margin: 40px auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .info-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px; box-sizing: border-box; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); }
+        .info-card .icon { font-size: 40px; margin-bottom: 10px; }
+        .info-card h3 { color: #006400; font-size: 22px; margin: 0 0 15px 0; border-bottom: 2px solid #006400; padding-bottom: 10px; }
+        .info-card ul { color: #333; font-size: 15px; line-height: 1.7; padding-left: 20px; margin: 0; text-align: justify; }
+        .info-card ul li { margin-bottom: 10px; }
+        .info-card ul li b { color: #006400; }
+
+        .nav-cards { width: 85%; margin: 50px auto 40px auto; display: flex; justify-content: space-between; gap: 20px; }
+        .nav-cards .card-link { flex: 1; text-decoration: none; display: block; }
+        .nav-cards .nav-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .nav-cards .nav-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); background: #006400; }
+        .nav-cards .nav-card:hover h3, .nav-cards .nav-card:hover p { color: white; }
+        .nav-cards .nav-card .card-icon { font-size: 36px; margin-bottom: 10px; }
+        .nav-cards .nav-card h3 { color: #006400; font-size: 20px; margin: 0 0 10px 0; transition: color 0.2s; }
+        .nav-cards .nav-card p { color: #333; font-size: 14px; margin: 0; line-height: 1.5; transition: color 0.2s; }
+
+        .references-section { width: 85%; margin: 40px auto 60px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .references-section h2 { color: #006400; font-size: 26px; margin: 0 0 20px 0; text-align: center; }
+        .references-section h4 { color: #006400; font-size: 18px; margin: 20px 0 10px 0; }
+        .references-section ul { color: #333; font-size: 15px; line-height: 1.8; padding-left: 25px; margin: 0; }
+        .references-section ul li { margin-bottom: 12px; }
+        .references-section a { color: #006400; text-decoration: underline; font-weight: bold; }
+        .references-section a:hover { color: #004d00; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Cards -->
+    <div class="top-nav-container">
+        <a href="index.html" class="card-link">
+            <div class="top-nav-card">
+                <div class="card-icon">🏠</div>
+                <h3>Home</h3>
+                <p>Introduction to Pax Silica</p>
+            </div>
+        </a>
+        <a href="history.html" class="card-link">
+            <div class="top-nav-card">
+                <div class="card-icon">📜</div>
+                <h3>History</h3>
+                <p>Timeline & Events</p>
+            </div>
+        </a>
+        <a href="significance.html" class="card-link">
+            <div class="top-nav-card">
+                <div class="card-icon">⭐</div>
+                <h3>Significance</h3>
+                <p>Impact & Advocacy</p>
+            </div>
+        </a>
+        <a href="background.html" class="card-link">
+            <div class="top-nav-card">
+                <div class="card-icon">📚</div>
+                <h3>Background</h3>
+                <p>Context & Foundations</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="topic-intro">
+        <h1>🔬 Pax Silica</h1>
+        <p class="subtitle">Building a Secure and Resilient Silicon Supply Chain</p>
+        <p>Pax Silica is a US-led strategic initiative launched in December 2025 to make technology supply chains more secure, resilient, and less vulnerable to disruptions. The name combines <i>pax</i> (Latin for peace) and <i>silica</i> (silicon) — reflecting its goal of bringing stability to the global semiconductor industry through international cooperation.</p>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="icon">💻</div>
+            <h3>What is Pax Silica?</h3>
+            <ul>
+                <li><b>US-led technology initiative</b> – focuses on building a more secure and reliable supply chain for important technologies.</li>
+                <li><b>Launched in December 2025</b> – created to make technology supply chains less vulnerable to disruptions and dependence on certain countries.</li>
+                <li><b>Focuses on silicon and semiconductors</b> – silicon is an important material used to produce semiconductors and other advanced technologies.</li>
+                <li><b>Aims to strengthen cooperation</b> – encourages participating countries to work together on technology, investment, and innovation.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <div class="icon">🎯</div>
+            <h3>Why Was Pax Silica Created?</h3>
+            <ul>
+                <li><b>Reduce dependence on vulnerable supply chains</b> – helps countries avoid relying too heavily on limited sources for important technology materials.</li>
+                <li><b>Encourage investment and joint projects</b> – promotes partnerships and investments between participating countries.</li>
+                <li><b>Build more resilient technology supply chains</b> – aims to make the production and movement of technology more stable during disruptions.</li>
+                <li><b>Promote technological development</b> – encourages countries to cooperate in developing new technologies and industries.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <div class="icon">🗺️</div>
+            <h3>Pax Silica & the Philippines</h3>
+            <ul>
+                <li><b>Philippines joined on April 17, 2026</b> – the country became the 13th signatory to the Pax Silica Declaration at the time.</li>
+                <li><b>4,000-acre Economic Security Zone</b> – the Philippines and the US announced plans for a large industrial area within the Luzon Economic Corridor.</li>
+                <li><b>New Clark City as a technology hub</b> – the area is planned to support AI, semiconductors, advanced manufacturing, and related industries.</li>
+                <li><b>Expected economic opportunities</b> – the project is intended to attract investments, create jobs, increase exports, and expand the country's technology sector.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <div class="icon">🔮</div>
+            <h3>Looking Ahead</h3>
+            <ul>
+                <li><b>Project is still developing</b> – many parts of the proposed industrial hub are still being planned and assessed.</li>
+                <li><b>Possible effects on communities and agriculture</b> – the government is studying how the project could affect surrounding areas and communities.</li>
+                <li><b>Development will happen in phases</b> – the industrial hub is expected to expand gradually over the coming years.</li>
+                <li><b>Raises questions about safeguards</b> – the project brings up questions about who benefits from the development and how its possible costs will be addressed.</li>
+            </ul>
+        </div>
+    </div>
+
+ 
+
+    <div class="references-section">
+        <h2>📚 References</h2>
+        <h4>🌐 Websites & Online Sources</h4>
+        <ul>
+            <li>Philippine Board of Investments. <a href="https://boi.gov.ph/philippines-us-partner-in-first-ever-ai-native-industrial-acceleration/" target="_blank">Philippines, US Partner in First-Ever AI-Native Industrial Acceleration Hub</a>.</li>
+            <li>Philippine News Agency. <a href="https://www.pna.gov.ph/articles/1273139" target="_blank">PH joins US-led Pax Silica; plan for industrial hub in Luzon unveiled</a>.</li>
+            <li>Philippine Information Agency. <a href="https://pia.gov.ph/news/bcda-eyes-ai-industrial-hub-in-new-clark-city-under-us-led-pax-silica-initiative/" target="_blank">BCDA eyes AI industrial hub in New Clark City under US-led Pax Silica initiative</a>.</li>
+        </ul>
+    </div>
+
+    <div class="bottom-bar">
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px;">
+            <font face="Arial" size="2" color="white">Pax Silica — Peace Through Silicon</font>
+        </div>
+    </div>
+</body>
+</html>

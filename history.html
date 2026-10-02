@@ -1,0 +1,171 @@
+<!-- HISTORY PAGE (history.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - My Portfolio</title>
+    <style>
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 160px; /* More space for wrapped top nav */
+            }
+            .top-nav-container {
+                flex-wrap: wrap; /* Allows nav cards to wrap to next line */
+                padding: 10px;
+                gap: 10px;
+            }
+            .top-nav-container .card-link {
+                max-width: 45%; /* Shows 2 nav cards per row on mobile */
+                min-width: 140px;
+            }
+            .topic-intro, .why-ph, .timeline-table-section, .visual-timeline, 
+            .references-section, .advocacy-section, .nav-cards {
+                width: 95%; /* Uses more screen width on mobile */
+                padding: 20px 15px; /* Reduces inner spacing */
+            }
+            .info-grid, .significance-grid {
+                width: 95%;
+                display: flex;
+                flex-direction: column; /* Stacks cards vertically on mobile */
+                gap: 15px;
+            }
+            .topic-intro h1 {
+                font-size: 28px; /* Smaller heading for mobile */
+            }
+            .topic-intro h2, .why-ph h2, .timeline-table-section h2, 
+            .visual-timeline h2, .references-section h2, .advocacy-section h2 {
+                font-size: 22px;
+            }
+            .timeline-table {
+                display: block;
+                overflow-x: auto; /* Allows horizontal scrolling for the table */
+                white-space: nowrap;
+            }
+        }
+        body { margin: 0; padding: 0; background-color: #fff0f5; background-image: url('2.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; font-family: Arial, sans-serif; padding-top: 110px; }
+        .top-nav-container { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 100, 0, 0.95); padding: 12px 5%; box-sizing: border-box; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: flex; justify-content: center; gap: 15px; }
+        .top-nav-container .card-link { flex: 1; max-width: 200px; text-decoration: none; display: block; }
+        .top-nav-card { background: rgba(255, 255, 255, 0.95); border: 2px solid #006400; border-radius: 10px; padding: 10px 12px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s; cursor: pointer; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); }
+        .top-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); background: #004d00; border-color: #ffffff; }
+        .top-nav-card .card-icon { font-size: 22px; margin-bottom: 4px; }
+        .top-nav-card h3 { color: #006400; font-size: 16px; margin: 0; font-weight: bold; transition: color 0.2s; }
+        .top-nav-card p { color: #555; font-size: 11px; margin: 2px 0 0 0; line-height: 1.2; transition: color 0.2s; }
+        .top-nav-card:hover h3, .top-nav-card:hover p { color: white; }
+        .bottom-bar { width: 100%; background: #006400; padding: 20px; box-sizing: border-box; margin-top: 60px; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); }
+        .topic-intro { width: 85%; margin: 20px auto 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 45px 35px; text-align: center; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0, 100, 0, 0.15); }
+        .topic-intro h1 { color: #006400; font-size: 42px; margin: 0 0 15px 0; }
+        .topic-intro .subtitle { color: #666; font-size: 16px; margin: 0 0 25px 0; font-style: italic; }
+        .topic-intro p { color: #333; font-size: 17px; margin: 10px auto; line-height: 1.7; max-width: 800px; text-align: justify; }
+        .why-ph { width: 85%; margin: 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .why-ph h2 { color: #006400; font-size: 28px; margin: 0 0 20px 0; text-align: center; border-bottom: 2px solid #006400; padding-bottom: 12px; }
+        .why-ph p { color: #333; font-size: 16px; line-height: 1.7; margin: 0; text-align: justify; }
+        .why-ph .highlight { background: rgba(240, 248, 240, 0.9); border-left: 4px solid #006400; padding: 15px 20px; margin-top: 20px; border-radius: 6px; font-style: italic; color: #006400; }
+        .timeline-table-section { width: 85%; margin: 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .timeline-table-section h2 { color: #006400; font-size: 28px; margin: 0 0 25px 0; text-align: center; }
+        .timeline-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        .timeline-table thead { background: #006400; color: white; }
+        .timeline-table th { padding: 14px 15px; text-align: left; font-weight: bold; }
+        .timeline-table td { padding: 14px 15px; border-bottom: 1px solid #e0e0e0; color: #333; vertical-align: top; line-height: 1.6; }
+        .timeline-table tbody tr:hover { background: rgba(240, 248, 240, 0.5); }
+        .timeline-table tbody tr:last-child td { border-bottom: none; }
+        .timeline-table td:first-child { font-weight: bold; color: #006400; white-space: nowrap; width: 15%; }
+        .timeline-table td:nth-child(2) { font-weight: bold; width: 30%; }
+        .visual-timeline { width: 85%; margin: 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .visual-timeline h2 { color: #006400; font-size: 28px; margin: 0 0 25px 0; text-align: center; }
+        .flow-item { background: rgba(240, 248, 240, 0.9); border-left: 4px solid #006400; border-radius: 6px; padding: 18px 22px; margin-bottom: 15px; transition: transform 0.2s, box-shadow 0.2s; }
+        .flow-item:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(0, 100, 0, 0.15); }
+        .flow-item .date { color: #006400; font-weight: bold; font-size: 16px; margin-bottom: 5px; }
+        .flow-item .event { color: #333; font-size: 15px; line-height: 1.5; }
+        .flow-arrow { text-align: center; color: #006400; font-size: 24px; margin: -5px 0; }
+        .references-section { width: 85%; margin: 40px auto 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .references-section h2 { color: #006400; font-size: 26px; margin: 0 0 20px 0; text-align: center; }
+        .references-section h4 { color: #006400; font-size: 18px; margin: 20px 0 10px 0; }
+        .references-section ul { color: #333; font-size: 15px; line-height: 1.8; padding-left: 25px; margin: 0; }
+        .references-section ul li { margin-bottom: 12px; }
+        .references-section a { color: #006400; text-decoration: underline; font-weight: bold; }
+        .references-section a:hover { color: #004d00; }
+        .nav-cards { width: 85%; margin: 50px auto 60px auto; display: flex; justify-content: space-between; gap: 20px; }
+        .nav-cards .card-link { flex: 1; text-decoration: none; display: block; }
+        .nav-cards .nav-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .nav-cards .nav-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); background: #006400; }
+        .nav-cards .nav-card:hover h3, .nav-cards .nav-card:hover p { color: white; }
+        .nav-cards .nav-card .card-icon { font-size: 36px; margin-bottom: 10px; }
+        .nav-cards .nav-card h3 { color: #006400; font-size: 20px; margin: 0 0 10px 0; transition: color 0.2s; }
+        .nav-cards .nav-card p { color: #333; font-size: 14px; margin: 0; line-height: 1.5; transition: color 0.2s; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav-container">
+        <a href="index.html" class="card-link"><div class="top-nav-card"><div class="card-icon">🏠</div><h3>Home</h3><p>Introduction to Pax Silica</p></div></a>
+        <a href="history.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📜</div><h3>History</h3><p>Timeline & Events</p></div></a>
+        <a href="significance.html" class="card-link"><div class="top-nav-card"><div class="card-icon">⭐</div><h3>Significance</h3><p>Impact & Advocacy</p></div></a>
+        <a href="background.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📚</div><h3>Background</h3><p>Context & Foundations</p></div></a>
+    </div>
+
+    <div class="topic-intro">
+        <h1>📜 History of Pax Silica in the Philippines</h1>
+        <p class="subtitle">A Timeline of Events, Decisions, and Growing Debates</p>
+        <p>The Philippines' involvement in Pax Silica began in April 2026, when the country officially joined the U.S.-led initiative focused on semiconductor and critical-technology supply chains. Since then, the project has sparked both excitement about economic opportunities and growing concerns from farmers, indigenous communities, youth, and civic organizations.</p>
+    </div>
+
+    <div class="why-ph">
+        <h2>🗺️ Why Was the Philippines Chosen for Pax Silica?</h2>
+        <p>The Philippines brings a combination of <b>resource endowment, industrial capability, and strategic positioning</b> that makes it a natural fit for the Pax Silica network. As a close U.S. treaty ally, the country brings to Pax Silica key capabilities and human talent in technology manufacturing, including semiconductors and electronics.</p>
+        <div class="highlight">💡 The Philippines' strong existing role in the global electronics industry, combined with its strategic location and alliance with the United States, positions it as a key partner in building more resilient technology supply chains.</div>
+    </div>
+
+    <div class="timeline-table-section">
+        <h2>📅 Timeline of Events</h2>
+        <table class="timeline-table">
+            <thead><tr><th>Date</th><th>Event</th><th>Significance</th></tr></thead>
+            <tbody>
+                <tr><td>April 2026</td><td>The Philippines joins the U.S. initiative</td><td>The Philippines officially became part of the U.S.-led initiative focused on semiconductor and critical-technology supply chains.</td></tr>
+                <tr><td>April 2026</td><td>New Clark City proposed as Philippine Pax Silica hub</td><td>The government proposed a roughly 1,600-hectare industrial and technology hub in Capas, Tarlac.</td></tr>
+                <tr><td>July 2026</td><td>Pax Silica highlighted in the State of the Nation Address</td><td>The Marcos administration presented the project as part of its plans for advanced manufacturing, AI, investment, and industrial development.</td></tr>
+                <tr><td>August 10, 2026</td><td>Farmers and Aeta community launch petition</td><td>Farmers and members of the Aeta community in Capas opposed the project, raising concerns about livelihoods, agricultural land, water, and possible displacement. The petition reportedly reached nearly 400,000 verified signatures. <i>(Philstar)</i></td></tr>
+                <tr><td>August 19, 2026</td><td>Youth protest outside BCDA office</td><td>League of Filipino Students, Agham Youth, Gabriela Youth, and Katribu Youth held a lightning rally at the BCDA office in Taguig. <i>(DZRH News)</i></td></tr>
+                <tr><td>August 31, 2026</td><td>Network Opposed to Pax Silica launched</td><td>More than 50 civic organizations joined a coalition involving environmental advocates, scientists, Indigenous groups, and other organizations. <i>(Inquirer.net)</i></td></tr>
+                <tr><td>September 10, 2026</td><td>Large protest during Luzon Economic Corridor Investment Forum</td><td>More than 300 activists protested outside the Grand Hyatt Manila while President Marcos was attending the investment forum. <i>(Philstar)</i></td></tr>
+                <tr><td>September 2026</td><td>Government responds to criticisms</td><td>BCDA maintained that the proposed hub would focus on semiconductors and advanced manufacturing with environmental regulations and community safeguards. <i>(Philippine Information Agency)</i></td></tr>
+                <tr><td>2027 (planned)</td><td>Further planning and development</td><td>BCDA expects detailed planning and negotiations before major construction.</td></tr>
+                <tr><td>Early 2028 (planned)</td><td>Possible construction of the AI Hub</td><td>Government officials have indicated that construction could begin around this period, subject to planning and agreements.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="visual-timeline">
+        <h2>🔄 Visual Timeline Flow</h2>
+        <div class="flow-item"><div class="date">📌 April 2026</div><div class="event">The Philippines joins Pax Silica</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 April–July 2026</div><div class="event">New Clark City proposed as industrial hub</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 August 10, 2026</div><div class="event">Farmers & Aeta communities petition against project</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 August 19, 2026</div><div class="event">Youth protest at BCDA office</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 August 31, 2026</div><div class="event">Network Opposed to Pax Silica established</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 September 10, 2026</div><div class="event">Large protest during Luzon Economic Corridor Forum</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 September 2026 onward</div><div class="event">Protests and debates continue over development, jobs, environment, water, agriculture, Indigenous communities, and national interests</div></div><div class="flow-arrow">↓</div>
+        <div class="flow-item"><div class="date">📌 2027–2028</div><div class="event">Planned development/construction, subject to government planning and agreements</div></div>
+    </div>
+
+    <div class="references-section">
+        <h2>📚 References</h2>
+        <h4>📰 News Sources & Official Reports</h4>
+        <ul>
+            <li>Antonio, J. (2026, August 10). <a href="https://www.philstar.com/nation/2026/08/10/2548202/farmers-aeta-group-push-petition-vs-pax-silica" target="_blank">Farmers, Aeta group push petition vs Pax Silica</a>. The Philippine Star.</li>
+            <li>Amor, L. (2026, August 19). <a href="https://www.dzrh.com.ph/post/protest-vs-pax-silica-tensions-flare-as-marshals-move-to-disperse-rallyists-in-taguig" target="_blank">Protest vs Pax Silica: Tensions flare as marshals move to disperse rallyists in Taguig</a>. DZRH News.</li>
+            <li>Bases Conversion and Development Authority. (2026, August 10). <a href="https://pia.gov.ph/news/bcda-clarifies-misconceptions-on-pax-silica-project-in-new-clark-city" target="_blank">BCDA clarifies misconceptions on Pax Silica project in New Clark City</a>. Philippine Information Agency.</li>
+            <li>Philippine News Agency. (2026, April 20). <a href="https://www.pna.gov.ph/articles/1273338" target="_blank">New Clark City to host AI hub under US-led Pax Silica</a>.</li>
+            <li>Presidential Communications Office. (2026, July 23). <a href="https://pco.gov.ph/news_releases/bcda-says-pax-silica-project-could-generate-over-130000-high-quality-jobs/" target="_blank">BCDA says Pax Silica project could generate over 130,000 high-quality jobs</a>.</li>
+        </ul>
+    </div>
+
+
+
+    <div class="bottom-bar">
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px;">
+            <font face="Arial" size="2" color="white">Pax Silica — Peace Through Silicon</font>
+        </div>
+    </div>
+</body>
+</html>

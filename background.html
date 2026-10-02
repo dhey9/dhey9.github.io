@@ -1,0 +1,158 @@
+<!-- BACKGROUND PAGE (background.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background - My Portfolio</title>
+    <style>
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 160px; /* More space for wrapped top nav */
+            }
+            .top-nav-container {
+                flex-wrap: wrap; /* Allows nav cards to wrap to next line */
+                padding: 10px;
+                gap: 10px;
+            }
+            .top-nav-container .card-link {
+                max-width: 45%; /* Shows 2 nav cards per row on mobile */
+                min-width: 140px;
+            }
+            .topic-intro, .why-ph, .timeline-table-section, .visual-timeline, 
+            .references-section, .advocacy-section, .nav-cards {
+                width: 95%; /* Uses more screen width on mobile */
+                padding: 20px 15px; /* Reduces inner spacing */
+            }
+            .info-grid, .significance-grid {
+                width: 95%;
+                display: flex;
+                flex-direction: column; /* Stacks cards vertically on mobile */
+                gap: 15px;
+            }
+            .topic-intro h1 {
+                font-size: 28px; /* Smaller heading for mobile */
+            }
+            .topic-intro h2, .why-ph h2, .timeline-table-section h2, 
+            .visual-timeline h2, .references-section h2, .advocacy-section h2 {
+                font-size: 22px;
+            }
+            .timeline-table {
+                display: block;
+                overflow-x: auto; /* Allows horizontal scrolling for the table */
+                white-space: nowrap;
+            }
+        }
+        body { margin: 0; padding: 0; background-color: #fff0f5; background-image: url('4.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; font-family: Arial, sans-serif; padding-top: 110px; }
+        .top-nav-container { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 100, 0, 0.95); padding: 12px 5%; box-sizing: border-box; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: flex; justify-content: center; gap: 15px; }
+        .top-nav-container .card-link { flex: 1; max-width: 200px; text-decoration: none; display: block; }
+        .top-nav-card { background: rgba(255, 255, 255, 0.95); border: 2px solid #006400; border-radius: 10px; padding: 10px 12px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s; cursor: pointer; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); }
+        .top-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); background: #004d00; border-color: #ffffff; }
+        .top-nav-card .card-icon { font-size: 22px; margin-bottom: 4px; }
+        .top-nav-card h3 { color: #006400; font-size: 16px; margin: 0; font-weight: bold; transition: color 0.2s; }
+        .top-nav-card p { color: #555; font-size: 11px; margin: 2px 0 0 0; line-height: 1.2; transition: color 0.2s; }
+        .top-nav-card:hover h3, .top-nav-card:hover p { color: white; }
+        .bottom-bar { width: 100%; background: #006400; padding: 20px; box-sizing: border-box; margin-top: 60px; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); }
+        .topic-intro { width: 85%; margin: 20px auto 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 45px 35px; text-align: center; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0, 100, 0, 0.15); }
+        .topic-intro h1 { color: #006400; font-size: 42px; margin: 0 0 15px 0; }
+        .topic-intro .subtitle { color: #666; font-size: 16px; margin: 0 0 25px 0; font-style: italic; }
+        .topic-intro p { color: #333; font-size: 17px; margin: 10px auto; line-height: 1.7; max-width: 800px; text-align: justify; }
+        .info-grid { width: 85%; margin: 40px auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .info-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px; box-sizing: border-box; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); }
+        .info-card .icon { font-size: 40px; margin-bottom: 10px; }
+        .info-card h3 { color: #006400; font-size: 22px; margin: 0 0 15px 0; border-bottom: 2px solid #006400; padding-bottom: 10px; }
+        .info-card p { color: #333; font-size: 15px; line-height: 1.7; margin: 0 0 10px 0; text-align: justify; }
+        .info-card ul { color: #333; font-size: 15px; line-height: 1.7; padding-left: 20px; margin: 0; text-align: justify; }
+        .info-card ul li { margin-bottom: 10px; }
+        .info-card ul li b { color: #006400; }
+        .def-list { list-style: none; padding-left: 0 !important; }
+        .def-list li { padding: 10px 0; border-bottom: 1px dashed #006400; }
+        .def-list li:last-child { border-bottom: none; }
+        .references-section { width: 85%; margin: 40px auto 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .references-section h2 { color: #006400; font-size: 26px; margin: 0 0 20px 0; text-align: center; }
+        .references-section h4 { color: #006400; font-size: 18px; margin: 20px 0 10px 0; }
+        .references-section ul { color: #333; font-size: 15px; line-height: 1.8; padding-left: 25px; margin: 0; }
+        .references-section ul li { margin-bottom: 12px; }
+        .references-section a { color: #006400; text-decoration: underline; font-weight: bold; }
+        .references-section a:hover { color: #004d00; }
+        .nav-cards { width: 85%; margin: 50px auto 60px auto; display: flex; justify-content: space-between; gap: 20px; }
+        .nav-cards .card-link { flex: 1; text-decoration: none; display: block; }
+        .nav-cards .nav-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .nav-cards .nav-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); background: #006400; }
+        .nav-cards .nav-card:hover h3, .nav-cards .nav-card:hover p { color: white; }
+        .nav-cards .nav-card .card-icon { font-size: 36px; margin-bottom: 10px; }
+        .nav-cards .nav-card h3 { color: #006400; font-size: 20px; margin: 0 0 10px 0; transition: color 0.2s; }
+        .nav-cards .nav-card p { color: #333; font-size: 14px; margin: 0; line-height: 1.5; transition: color 0.2s; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav-container">
+        <a href="index.html" class="card-link"><div class="top-nav-card"><div class="card-icon">🏠</div><h3>Home</h3><p>Introduction to Pax Silica</p></div></a>
+        <a href="history.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📜</div><h3>History</h3><p>Timeline & Events</p></div></a>
+        <a href="significance.html" class="card-link"><div class="top-nav-card"><div class="card-icon">⭐</div><h3>Significance</h3><p>Impact & Advocacy</p></div></a>
+        <a href="background.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📚</div><h3>Background</h3><p>Context & Foundations</p></div></a>
+    </div>
+
+    <div class="topic-intro">
+        <h1>🌐 Background of Pax Silica</h1>
+        <p class="subtitle">Understanding the Context, Concepts, and Foundations</p>
+        <p>Pax Silica is the Department of State's leading strategic initiative to build a secure and innovation-driven silicon supply chain. Launched in December 2025, it advances a new economic security consensus among allies and trusted stakeholders, making technology supply chains more resilient and less vulnerable to disruptions or coercive dependencies.</p>
+        <p>The name combines <i>pax</i> (Latin for peace and stability) and <i>silica</i> (silicon) — the key material used in semiconductor manufacturing.</p>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="icon">🔑</div><h3>Key Concepts & Definitions</h3>
+            <ul class="def-list">
+                <li><b>Pax Silica:</b> A US-led initiative promoting secure semiconductor supply chains through international cooperation.</li>
+                <li><b>Silicon / Silica:</b> A key material used in semiconductor manufacturing and advanced technologies.</li>
+                <li><b>Semiconductor:</b> Electronic components essential for modern devices, from phones to AI systems.</li>
+                <li><b>Economic Security Zone:</b> A designated industrial area for strategic technology development.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <div class="icon">🌍</div><h3>Context & Environment</h3>
+            <p>Pax Silica emerged amid growing global concerns about technology supply chain vulnerabilities, particularly the heavy dependence on concentrated sources of semiconductors. The initiative responds to geopolitical tensions, trade disruptions, and the strategic importance of chips in modern economies.</p>
+            <p>In the Philippines, the initiative aligns with the country's existing role in the global electronics industry and aims to position New Clark City as a major hub for AI, semiconductors, and advanced manufacturing.</p>
+        </div>
+        <div class="info-card">
+            <div class="icon">🏗️</div><h3>Prerequisites & Foundational Elements</h3>
+            <ul>
+                <li><b>International Cooperation:</b> Participation from allied nations committed to supply chain security.</li>
+                <li><b>Investment Commitments:</b> Joint funding and resource-sharing among partner countries.</li>
+                <li><b>Infrastructure Development:</b> Facilities like the 4,000-acre Economic Security Zone in the Luzon Economic Corridor.</li>
+                <li><b>Policy Frameworks:</b> Agreements such as the Pax Silica Declaration signed in December 2025.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <div class="icon">🔗</div><h3>Related Topics & Connections</h3>
+            <ul>
+                <li><b>Global Semiconductor Industry</b> – Pax Silica directly engages with the worldwide chip supply chain.</li>
+                <li><b>Artificial Intelligence</b> – AI development depends heavily on semiconductor availability.</li>
+                <li><b>Economic Security</b> – The initiative is part of a broader push for resilient national economies.</li>
+                <li><b>Philippine Industrialization</b> – Connects to the country's goals in advanced manufacturing and tech exports.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="references-section">
+        <h2>📚 References</h2>
+        <h4>🌐 Websites & Official Sources</h4>
+        <ul>
+            <li>United States Department of State. (2026, August 27). <a href="https://www.state.gov/pax-silica" target="_blank">Pax Silica</a>.</li>
+            <li>Office of the Spokesman. (2025, December 13). <a href="https://www.state.gov/releases/office-of-the-spokesperson/2025/12/pax-silica-initiative" target="_blank">Pax Silica Summit - United States Department of State</a>. United States Department of State.</li>
+        </ul>
+    </div>
+
+
+
+    <div class="bottom-bar">
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px;">
+            <font face="Arial" size="2" color="white">Pax Silica — Peace Through Silicon</font>
+        </div>
+    </div>
+</body>
+</html>

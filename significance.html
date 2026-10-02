@@ -1,0 +1,121 @@
+<!-- SIGNIFICANCE PAGE (significance.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Significance - My Portfolio</title>
+    <style>
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 160px; /* More space for wrapped top nav */
+            }
+            .top-nav-container {
+                flex-wrap: wrap; /* Allows nav cards to wrap to next line */
+                padding: 10px;
+                gap: 10px;
+            }
+            .top-nav-container .card-link {
+                max-width: 45%; /* Shows 2 nav cards per row on mobile */
+                min-width: 140px;
+            }
+            .topic-intro, .why-ph, .timeline-table-section, .visual-timeline, 
+            .references-section, .advocacy-section, .nav-cards {
+                width: 95%; /* Uses more screen width on mobile */
+                padding: 20px 15px; /* Reduces inner spacing */
+            }
+            .info-grid, .significance-grid {
+                width: 95%;
+                display: flex;
+                flex-direction: column; /* Stacks cards vertically on mobile */
+                gap: 15px;
+            }
+            .topic-intro h1 {
+                font-size: 28px; /* Smaller heading for mobile */
+            }
+            .topic-intro h2, .why-ph h2, .timeline-table-section h2, 
+            .visual-timeline h2, .references-section h2, .advocacy-section h2 {
+                font-size: 22px;
+            }
+            .timeline-table {
+                display: block;
+                overflow-x: auto; /* Allows horizontal scrolling for the table */
+                white-space: nowrap;
+            }
+        }
+        body { margin: 0; padding: 0; background-color: #fff0f5; background-image: url('3.jpg'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat; font-family: Arial, sans-serif; padding-top: 110px; }
+        .top-nav-container { position: fixed; top: 0; left: 0; width: 100%; background: rgba(0, 100, 0, 0.95); padding: 12px 5%; box-sizing: border-box; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); display: flex; justify-content: center; gap: 15px; }
+        .top-nav-container .card-link { flex: 1; max-width: 200px; text-decoration: none; display: block; }
+        .top-nav-card { background: rgba(255, 255, 255, 0.95); border: 2px solid #006400; border-radius: 10px; padding: 10px 12px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s; cursor: pointer; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); }
+        .top-nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); background: #004d00; border-color: #ffffff; }
+        .top-nav-card .card-icon { font-size: 22px; margin-bottom: 4px; }
+        .top-nav-card h3 { color: #006400; font-size: 16px; margin: 0; font-weight: bold; transition: color 0.2s; }
+        .top-nav-card p { color: #555; font-size: 11px; margin: 2px 0 0 0; line-height: 1.2; transition: color 0.2s; }
+        .top-nav-card:hover h3, .top-nav-card:hover p { color: white; }
+        .bottom-bar { width: 100%; background: #006400; padding: 20px; box-sizing: border-box; margin-top: 60px; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); }
+        .topic-intro { width: 80%; margin: 20px auto 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 40px 30px; text-align: center; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0, 100, 0, 0.15); }
+        .topic-intro h2 { color: #006400; font-size: 36px; margin: 0 0 20px 0; }
+        .topic-intro p { color: #333; font-size: 16px; margin: 10px 0; line-height: 1.6; text-align: justify; }
+        .significance-grid { width: 85%; margin: 40px auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .sig-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px; box-sizing: border-box; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .sig-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); }
+        .sig-card .icon { font-size: 40px; margin-bottom: 10px; }
+        .sig-card h3 { color: #006400; font-size: 22px; margin: 0 0 15px 0; border-bottom: 2px solid #006400; padding-bottom: 10px; }
+        .sig-card p { color: #333; font-size: 15px; line-height: 1.7; margin: 0; text-align: justify; }
+        .advocacy-section { width: 85%; margin: 40px auto; background: rgba(0, 100, 0, 0.9); border-radius: 12px; padding: 40px 35px; box-sizing: border-box; text-align: center; box-shadow: 0 6px 18px rgba(0, 100, 0, 0.3); }
+        .advocacy-section h2 { color: white; font-size: 28px; margin: 0 0 20px 0; }
+        .advocacy-section p { color: white; font-size: 17px; line-height: 1.8; margin: 0; font-style: italic; }
+        .references-section { width: 85%; margin: 40px auto 40px auto; background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 35px; box-sizing: border-box; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .references-section h2 { color: #006400; font-size: 26px; margin: 0 0 20px 0; text-align: center; }
+        .references-section h4 { color: #006400; font-size: 18px; margin: 20px 0 10px 0; }
+        .references-section ul { color: #333; font-size: 15px; line-height: 1.8; padding-left: 25px; margin: 0; }
+        .references-section ul li { margin-bottom: 12px; }
+        .references-section a { color: #006400; text-decoration: underline; font-weight: bold; }
+        .references-section a:hover { color: #004d00; }
+        .nav-cards { width: 85%; margin: 50px auto 60px auto; display: flex; justify-content: space-between; gap: 20px; }
+        .nav-cards .card-link { flex: 1; text-decoration: none; display: block; }
+        .nav-cards .nav-card { background: rgba(255, 255, 255, 0.85); border: 2px solid #006400; border-radius: 12px; padding: 30px 20px; text-align: center; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; cursor: pointer; box-shadow: 0 3px 10px rgba(0, 100, 0, 0.1); }
+        .nav-cards .nav-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 100, 0, 0.25); background: #006400; }
+        .nav-cards .nav-card:hover h3, .nav-cards .nav-card:hover p { color: white; }
+        .nav-cards .nav-card .card-icon { font-size: 36px; margin-bottom: 10px; }
+        .nav-cards .nav-card h3 { color: #006400; font-size: 20px; margin: 0 0 10px 0; transition: color 0.2s; }
+        .nav-cards .nav-card p { color: #333; font-size: 14px; margin: 0; line-height: 1.5; transition: color 0.2s; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav-container">
+        <a href="index.html" class="card-link"><div class="top-nav-card"><div class="card-icon">🏠</div><h3>Home</h3><p>Introduction to Pax Silica</p></div></a>
+        <a href="history.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📜</div><h3>History</h3><p>Timeline & Events</p></div></a>
+        <a href="significance.html" class="card-link"><div class="top-nav-card"><div class="card-icon">⭐</div><h3>Significance</h3><p>Impact & Advocacy</p></div></a>
+        <a href="background.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📚</div><h3>Background</h3><p>Context & Foundations</p></div></a>
+    </div>
+
+    <div class="topic-intro">
+        <h2>The Significance of Pax Silica</h2>
+        <p>Pax Silica is significant because its development could affect more than the Philippines' technology sector. Its proposed industrial activities could have major implications on <b>farmers, local communities, natural resources, and the environment</b>.</p>
+    </div>
+
+    <div class="significance-grid">
+        <div class="sig-card"><div class="icon">🌾</div><h3>Impact on Farmers</h3><p>Agricultural land could be converted for industrial use, potentially affecting local food production. Changes in nearby land could disrupt farming communities. Farmers could face changes in access to farmland and water resources, and might need support when development affects their livelihood.</p></div>
+        <div class="sig-card"><div class="icon">🌿</div><h3>Environment</h3><p>Large industrial facilities will have an increased demand for water and energy. Industrial activity could also create additional risks: waste, pollution, and habitat destruction from mining and mineral processing. Environmental safeguards along with proper assessments and monitoring would ensure safety for the locals and indigenous people.</p></div>
+        <div class="sig-card"><div class="icon">🤝</div><h3>Community Participation</h3><p>Local communities should receive clear information about the developments due to the concerns that will be spoken about by the neighboring communities because of the decisions involving the land and its resources due to the development of an industrial hub.</p></div>
+        <div class="sig-card"><div class="icon">🏛️</div><h3>Government Accountability</h3><p>Government agencies have an important role in monitoring the environmental and social impacts of this initiative. Projects should follow the environmental regulations, while proper checks and consultations help ensure compliance. Clear communication between the government, businesses, and affected communities is important for addressing concerns all throughout the development process.</p></div>
+    </div>
+
+    <div class="advocacy-section">
+        <h2>📢 Our Overall Advocacy</h2>
+        <p>"Our advocacy is to protect Filipino farmers and communities, demand stronger environmental safeguards, promote government accountability, and ensure that national development benefits Filipinos without compromising the land, resources, and future."</p>
+    </div>
+
+
+
+
+    <div class="bottom-bar">
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px;">
+            <font face="Arial" size="2" color="white">Pax Silica — Peace Through Silicon</font>
+        </div>
+    </div>
+</body>
+</html>
