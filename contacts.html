@@ -1,0 +1,241 @@
+<!-- CONTACTS PAGE (contacts.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts - My Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff0f5;
+            background-image: url('5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            padding-top: 110px;
+        }
+
+        /* Top Navigation Cards */
+        .top-nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 100, 0, 0.95);
+            padding: 12px 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-section { display: flex; align-items: center; gap: 10px; }
+        .nav-section.center { flex: 1; justify-content: center; }
+        .top-nav-container .card-link { text-decoration: none; display: block; }
+        .top-nav-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #006400;
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            min-width: 120px;
+        }
+        .top-nav-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: #004d00;
+            border-color: #ffffff;
+        }
+        .top-nav-card .card-icon { font-size: 22px; margin-bottom: 4px; }
+        .top-nav-card h3 { color: #006400; font-size: 15px; margin: 0; font-weight: bold; transition: color 0.2s; }
+        .top-nav-card p { color: #555; font-size: 11px; margin: 2px 0 0 0; line-height: 1.2; transition: color 0.2s; }
+        .top-nav-card:hover h3, .top-nav-card:hover p { color: white; }
+
+        /* Page Header */
+        .page-header {
+            width: 85%;
+            margin: 20px auto 40px auto;
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid #006400;
+            border-radius: 12px;
+            padding: 40px 35px;
+            text-align: center;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0, 100, 0, 0.15);
+        }
+        .page-header h1 { color: #006400; font-size: 42px; margin: 0 0 15px 0; }
+        .page-header .subtitle { color: #666; font-size: 18px; margin: 0; font-style: italic; }
+
+        /* Contact Info Card (Restored to original 85% width) */
+        .contact-info-card {
+            width: 85%;
+            margin: 0 auto 40px auto;
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid #006400;
+            border-radius: 12px;
+            padding: 45px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0, 100, 0, 0.15);
+        }
+        .contact-info-card h2 {
+            color: #006400;
+            font-size: 28px;
+            margin: 0 0 30px 0;
+            text-align: center;
+            border-bottom: 2px solid #006400;
+            padding-bottom: 15px;
+        }
+        
+        /* Centered single item layout */
+        .info-item-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(240, 248, 240, 0.5);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #006400;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .info-item-centered .icon {
+            font-size: 36px;
+            margin-right: 20px;
+            text-align: center;
+        }
+        .info-item-centered .details {
+            text-align: left;
+        }
+        .info-item-centered .details h3 {
+            color: #006400;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+        .info-item-centered .details p {
+            color: #333;
+            font-size: 15px;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        .info-item-centered .details a {
+            color: #006400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .info-item-centered .details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Advocacy Pledge Section */
+        .advocacy-pledge {
+            width: 85%;
+            margin: 0 auto 60px auto;
+            background: rgba(0, 100, 0, 0.9);
+            border-radius: 12px;
+            padding: 40px 35px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 100, 0, 0.3);
+        }
+        .advocacy-pledge h2 {
+            color: white;
+            font-size: 28px;
+            margin: 0 0 20px 0;
+        }
+        .advocacy-pledge p {
+            color: white;
+            font-size: 17px;
+            line-height: 1.8;
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Bottom Bar */
+        .bottom-bar {
+            width: 100%;
+            background: #006400;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 60px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body { padding-top: 160px; }
+            .top-nav-container { flex-wrap: wrap; padding: 10px; }
+            .nav-section.center { flex-wrap: wrap; }
+            .top-nav-card { min-width: 100px; }
+            .page-header, .contact-info-card, .advocacy-pledge { width: 95%; padding: 25px; }
+            .page-header h1 { font-size: 28px; }
+            .info-item-centered { flex-direction: column; text-align: center; }
+            .info-item-centered .icon { margin-right: 0; margin-bottom: 15px; }
+            .info-item-centered .details { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Cards -->
+    <div class="top-nav-container">
+        <div class="nav-section left">
+            <a href="infographic.html" class="card-link">
+                <div class="top-nav-card"><div class="card-icon">📊</div><h3>Infographic</h3><p>Visual Overview</p></div>
+            </a>
+        </div>
+        <div class="nav-section center">
+            <a href="index.html" class="card-link"><div class="top-nav-card"><div class="card-icon">🏠</div><h3>Home</h3><p>Introduction</p></div></a>
+            <a href="history.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📜</div><h3>History</h3><p>Timeline</p></div></a>
+            <a href="significance.html" class="card-link"><div class="top-nav-card"><div class="card-icon">⭐</div><h3>Significance</h3><p>Impact</p></div></a>
+            <a href="background.html" class="card-link"><div class="top-nav-card"><div class="card-icon">📚</div><h3>Background</h3><p>Context</p></div></a>
+        </div>
+        <div class="nav-section right">
+            <a href="contacts.html" class="card-link">
+                <div class="top-nav-card"><div class="card-icon"></div><h3>Contacts</h3><p>Get in Touch</p></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Contact Us</h1>
+        <p class="subtitle">Have questions about Pax Silica, academic inquiries, or want to join the advocacy?</p>
+    </div>
+
+    <!-- Contact Information Card -->
+    <div class="contact-info-card">
+        <h2>📬 Connect With Us</h2>
+        
+        <div class="info-item-centered">
+            <div class="icon">🌐</div>
+            <div class="details">
+                <h3>Social Media</h3>
+                <p><a href="https://www.instagram.com/ourlandourfutureph/?fbclid=IwY2xjawVD5BdleHRuA2FlbQIxMABwZG9mBWJyaWQRMTM0WVVpVlhWU1F4RlF2VWJzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe2U5Vlfi1xosK-Wn9YRn0kmrtEdKGoBrIeoQ19oWizNMksG0E7ZWVDoQwR_Q_aem_oBkS5rw8FBaA3K8DK8nRWQ" target="_blank">ourlandourfutureph	</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advocacy Pledge Section -->
+    <div class="advocacy-pledge">
+        <h2>✊ Join the Advocacy</h2>
+        <p>"Our advocacy is to protect Filipino farmers and communities, demand stronger environmental safeguards, promote government accountability, and ensure that national development benefits Filipinos without compromising the land, resources, and future."</p>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 12px;">
+            <font face="Arial" size="2" color="white">Pax Silica — Peace Through Silicon</font>
+        </div>
+    </div>
+
+</body>
+</html>
